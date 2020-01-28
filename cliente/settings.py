@@ -80,7 +80,7 @@ DATABASES = {
         'PASSWORD':'master12345',
         'HOST': 'database-1.cw6fwas135on.us-east-1.rds.amazonaws.com',
         'PORT': '5432',
-        'NAME': 'postgres'
+        'NAME': 'fabiandatabase'
     }
 }
 
