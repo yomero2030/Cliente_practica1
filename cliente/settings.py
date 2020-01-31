@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'USER': 'postgres',
         'PASSWORD':'master12345',
-        'HOST': 'database-1.cw6fwas135on.us-east-1.rds.amazonaws.com',
+        'HOST': 'replica.cw6fwas135on.us-east-1.rds.amazonaws.com',
         'PORT': '5432',
         'NAME': 'fabiandatabase'
     }
