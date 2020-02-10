@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+#from decouple import config
+from decouple import config, Csv
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,13 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x86iq5b&iwfus7ik@#tr-(4@1tzem&g$6whh3v@rle34a8s41d'
+SECRET_KEY = config('SECRET_KEY')#habeer
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['localhost','54.211.144.159']
-
+#ALLOWED_HOSTS = ['localhost','54.211.144.159']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'Login',
     'rest_framework.authtoken'
+
 ]
 
 MIDDLEWARE = [
@@ -79,11 +82,11 @@ WSGI_APPLICATION = 'cliente.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'USER': 'postgres',
-        'PASSWORD':'master1234',
-        'HOST': 'replica.cw6fwas135on.us-east-1.rds.amazonaws.com',
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST':  config('DB_HOST'),
         'PORT': '5432',
-        'NAME': 'fabiandatabase'
+        'NAME': config('DB_NAME'),
     }
 }
 
@@ -150,3 +153,5 @@ CORS_ALLOW_METHODS = (
 'POST',
 'PUT',
 )
+
+
