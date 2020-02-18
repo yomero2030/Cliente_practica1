@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'Profile',
 
+
 ]
 
 MIDDLEWARE = [
@@ -93,6 +94,36 @@ DATABASES = {
 }
 
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+         
+    ]
+}
+
+
+
+SITE_ID = 1
+
+REST_FRAMEWORK = {
+'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.IsAuthenticated',),
+'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication.TokenAuthentication',),
+'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+'PAGE_SIZE': 100,
+#importar 
+'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
+
+CORS_ALLOW_METHODS = (
+'DELETE',
+'GET',
+'POST',
+'PUT',
+)
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -130,30 +161,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'staticfiles'
-
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-
-SITE_ID = 1
-
-REST_FRAMEWORK = {
-'DEFAULT_PERMISSION_CLASSES':('rest_framework.permissions.IsAuthenticated',),
-'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication.TokenAuthentication',),
-'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-'PAGE_SIZE': 100
-}
-
-CORS_ALLOW_METHODS = (
-'DELETE',
-'GET',
-'POST',
-'PUT',
-)
-
 

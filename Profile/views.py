@@ -23,8 +23,24 @@ from Profile.serializer import Example2SerializersCiudad
 from Profile.serializer import Example2SerializersEstado
 from Profile.serializer import Example2SerializersEstadoCivil
 
+import coreapi
+from rest_framework.schemas import AutoSchema
+
+class ProfileLisViewSchema(AutoSchema):
+    def get_manual_fields(self,path,method):
+        extra_fields = []
+        if method.lower() in ('post','get'):
+            extra_fields = [
+                coreapi.Field('nombre')
+            ]
+        manual_fields =super().get_manual_fields(path,method)
+        return manual_fields + extra_fields
+
+
 
 class Example2Ocupacion(APIView):
+    permission_classes  = []
+    esquema  =  ProfileLisViewSchema ()
     def get(self, request , format = None):
         print ("metodo get filter")
         queryset = Ocupacion2.objects.filter(delete = False)
@@ -41,7 +57,9 @@ class Example2Ocupacion(APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 #class Genero 
 class Example2Genero(APIView):
-
+    permission_classes  = []
+    esquema  =  ProfileLisViewSchema ()
+    ##############
     def get(self, request , format = None):
         print ("metodo get filter")
         queryset = Genero2.objects.filter(delete = False)
@@ -58,6 +76,9 @@ class Example2Genero(APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 
 class Example2Ciudad (APIView):
+    permission_classes  = []
+    esquema  =  ProfileLisViewSchema ()
+    ##############
     def get(self, request , format = None):
         print ("metodo get filter")
         queryset = Ciudad2.objects.filter(delete = False)
@@ -73,6 +94,9 @@ class Example2Ciudad (APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 
 class ExampleEstado (APIView):
+    permission_classes  = []
+    esquema  =  ProfileLisViewSchema ()
+    ##############
     def get(self, request , format = None):
         print ("metodo get filter")
         queryset = Estado2.objects.filter(delete = False)
@@ -88,6 +112,9 @@ class ExampleEstado (APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 
 class Example2EstadoCivil(APIView):
+    permission_classes  = []
+    esquema  =  ProfileLisViewSchema ()
+    ##############
     def get(self, request , format = None):
         print ("metodo get filter")
         queryset = EstadoCivil2.objects.filter(delete = False)
@@ -105,6 +132,9 @@ class Example2EstadoCivil(APIView):
 
 #metodo de get 
 class Example2Profile(APIView):
+    permission_classes  = []
+    esquema  =  ProfileLisViewSchema ()
+    ##############
     #metodo get para solicitud
     def get(self, request, format = None):
         print ("metodo get filter")
