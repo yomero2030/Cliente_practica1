@@ -112,7 +112,8 @@ REST_FRAMEWORK = {
 'DEFAULT_AUTHENTICATION_CLASSES':('rest_framework.authentication.TokenAuthentication',),
 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 'PAGE_SIZE': 100,
-'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+## en el server no jala vamos haber que shows si es cierto
+#'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
 }
 
 CORS_ALLOW_METHODS = (
