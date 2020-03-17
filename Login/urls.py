@@ -8,7 +8,7 @@ from Login.views import ExampleList2
 
 urlpatterns = [
     re_path(r'Login/$', CustonAuthToken.as_view()),
-    #Hola soy roberto
+
 
 
     re_path(r'example_lista2/$', ExampleList2.as_view()),
