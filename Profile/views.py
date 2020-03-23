@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 # Create your views here.
-
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
@@ -39,7 +39,7 @@ class ProfileLisViewSchema(AutoSchema):
 
 
 class Example2Ocupacion(APIView):
-    permission_classes  = []
+    permission_classes  = [IsAuthenticated]
     esquema  =  ProfileLisViewSchema ()
     def get(self, request , format = None):
         print ("metodo get filter")
@@ -57,7 +57,7 @@ class Example2Ocupacion(APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 #class Genero 
 class Example2Genero(APIView):
-    permission_classes  = []
+    permission_classes  = [IsAuthenticated]
     esquema  =  ProfileLisViewSchema ()
     ##############
     def get(self, request , format = None):
@@ -76,7 +76,7 @@ class Example2Genero(APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 
 class Example2Ciudad (APIView):
-    permission_classes  = []
+    permission_classes  = [IsAuthenticated]
     esquema  =  ProfileLisViewSchema ()
     ##############
     def get(self, request , format = None):
@@ -94,7 +94,7 @@ class Example2Ciudad (APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 
 class ExampleEstado (APIView):
-    permission_classes  = []
+    permission_classes  = [IsAuthenticated]
     esquema  =  ProfileLisViewSchema ()
     ##############
     def get(self, request , format = None):
@@ -112,7 +112,7 @@ class ExampleEstado (APIView):
         return Response(serializer.errors , status = status.Http_400_BAD_REQUEST)
 
 class Example2EstadoCivil(APIView):
-    permission_classes  = []
+    permission_classes  = [IsAuthenticated]
     esquema  =  ProfileLisViewSchema ()
     ##############
     def get(self, request , format = None):
@@ -132,7 +132,7 @@ class Example2EstadoCivil(APIView):
 
 #metodo de get 
 class Example2Profile(APIView):
-    permission_classes  = []
+    permission_classes  = [IsAuthenticated]
     esquema  =  ProfileLisViewSchema ()
     ##############
     #metodo get para solicitud

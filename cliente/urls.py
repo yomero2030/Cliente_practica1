@@ -20,7 +20,7 @@ from rest_framework import routers, serializers, viewsets
 from django.urls import path, re_path
 from rest_framework_swagger.views import get_swagger_view
 
-schema_view = get_swagger_view(title='my projecto ')
+schema_view = get_swagger_view(title='my proyecto ')
 
  
 # Serializers define the API representation.
@@ -56,7 +56,7 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #url(r'^$', schema_view),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'^',include(router.urls)),
     re_path(r'^api/v1/',include('Login.urls')),
     re_path(r'^api/v1/',include('Profile.urls')),
